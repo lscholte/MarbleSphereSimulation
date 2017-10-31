@@ -1,3 +1,0 @@
-[submodule "lib/atlas"]
-	path = lib/atlas
-	url = https://github.com/lscholte/atlas.git
