@@ -1,5 +1,5 @@
 # MarbleSphereSimulation
-A real-time simulation of a marble rolling inside a bowl (represented as a wireframe sphere) with OpenGL
+A real-time simulation of a marble rolling inside a bowl (represented as a wireframe sphere) with OpenGL. This simulation has 4 generalized coordinates with 2 degrees of freedom.
 
 # How to Build and Run
 First clone the repository. Remember to add the recursive option as there is a submodule that must also be cloned.
