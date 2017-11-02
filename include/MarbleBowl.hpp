@@ -13,6 +13,7 @@ class MarbleBowl : public atlas::utils::Geometry
 
         void renderGeometry(atlas::math::Matrix4 const &projection, atlas::math::Matrix4 const &view) override;
         void updateGeometry(atlas::core::Time<> const &t) override;
+        void drawGui() override;        
 
         void applyTransformations();
     
@@ -35,6 +36,11 @@ class MarbleBowl : public atlas::utils::Geometry
         //mPhi1 = marble rotation about z axis
         //mPhi2 = marble rotation about y axis
         float mPhi1, mPhi2;
+
+        float mMarbleRotationAngle;
+        glm::vec3 mMarbleRotationAxis;
+
+        glm::mat4 mRotationMatrix;
 
 };
 
