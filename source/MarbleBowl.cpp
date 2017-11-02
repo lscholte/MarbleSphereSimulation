@@ -4,14 +4,13 @@
 
 MarbleBowl::MarbleBowl() :
     mBowl(5.0f),
+    mGravityEnabled(true),
     mTheta1(0.0f),
     mTheta2(0.0f),
     mTheta1Dot(0.0f),
     mTheta2Dot(0.0f),
     mTheta1DotDot(0.0f),
-    mTheta2DotDot(0.0f),
-    mPhi1(0.0f),
-    mPhi2(0.0f)
+    mTheta2DotDot(0.0f)
 {
     this->applyTransformations();    
 }
@@ -29,7 +28,7 @@ void MarbleBowl::renderGeometry(atlas::math::Matrix4 const &projection, atlas::m
 void MarbleBowl::updateGeometry(atlas::core::Time<> const &t)
 {	
     //Compute the angular accelerations of the marble around the bowl
-    mTheta1DotDot = -(9.81*sin(mTheta1)) / mBowl.getRadius();
+    mTheta1DotDot = mGravityEnabled ? -(9.81*sin(mTheta1)) / mBowl.getRadius() : 0.0f;
     mTheta2DotDot = 0.0;    
 
     //Compute the angular velocities of the marble around the bowl
@@ -74,11 +73,11 @@ void MarbleBowl::drawGui()
 {	
 	ImGui::SetNextWindowSize(ImVec2(300, 100), ImGuiSetCond_FirstUseEver);
 	
-	ImGui::Begin("Marble Bowl Options");
-	ImGui::SliderFloat("Theta 1", &mTheta1, -0.5*M_PI, 0.5*M_PI);
-    ImGui::SliderFloat("Theta 2", &mTheta2, 0.0f, 2.0*M_PI);
-    // ImGui::SliderFloat("Theta 1 (Speed)", &mTheta1Dot, -4.0*M_PI, 4.0*M_PI);
-	ImGui::SliderFloat("Theta 2 (Speed)", &mTheta2Dot, -4.0*M_PI, 4.0*M_PI);
+    ImGui::Begin("Marble Bowl Options");
+    ImGui::Checkbox("Gravity Enabled", &mGravityEnabled);
+	ImGui::SliderFloat("Inclination", &mTheta1, -0.5*M_PI, 0.5*M_PI);
+    ImGui::SliderFloat("Azimuth", &mTheta2, 0.0f, 2.0*M_PI);
+	ImGui::SliderFloat("Inclination Speed", &mTheta2Dot, -4.0*M_PI, 4.0*M_PI);
 	ImGui::End();
 }
 

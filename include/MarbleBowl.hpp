@@ -21,6 +21,8 @@ class MarbleBowl : public atlas::utils::Geometry
         Marble mMarble;
         Bowl mBowl;
 
+        bool mGravityEnabled;
+
         //mTheta1 = angular position about z axis
         //mTheta2 = angular position about y axis
         float mTheta1, mTheta2;
@@ -32,10 +34,6 @@ class MarbleBowl : public atlas::utils::Geometry
         //mTheta1DotDot = angular acceleration about z axis
         //mTheta2DotDot = angular acceleration about y axis
         float mTheta1DotDot, mTheta2DotDot;
-
-        //mPhi1 = marble rotation about z axis
-        //mPhi2 = marble rotation about y axis
-        float mPhi1, mPhi2;
 
         float mMarbleRotationAngle;
         glm::vec3 mMarbleRotationAxis;
